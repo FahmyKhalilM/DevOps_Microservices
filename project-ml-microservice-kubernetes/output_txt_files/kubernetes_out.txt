@@ -1,1 +1,46 @@
 <paste log output from Kubernetes-mediated prediction, here>
+#those Errors have been made on purpose as the Deployment was already on running state
+
+(.devops) voclabs:~/environment/DevOps_Microservices/project-ml-microservice-kubernetes (master) $ ./run_kubernetes.sh 
+error: failed to create deployment: deployments.apps "ml-app" already exists
+NAME     READY   UP-TO-DATE   AVAILABLE   AGE
+ml-app   1/1     1            1           107s
+NAME                      READY   STATUS    RESTARTS   AGE
+ml-app-5df447d947-wvqj4   1/1     Running   0          107s
+Error from server (AlreadyExists): services "ml-app" already exists
+Forwarding from 127.0.0.1:8000 -> 80
+Forwarding from [::1]:8000 -> 80
+Handling connection for 8000
+Handling connection for 8000
+
+output from the command --> kubectl logs ml-ml-app-5df447d947-wvqj4 in another terminal>
+kubectl logs ml-app-5df447d947-wvqj4
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 112-489-441
+[2022-09-13 15:23:20,199] INFO in app: JSON payload: 
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2022-09-13 15:23:20,220] INFO in app: Inference payload DataFrame: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2022-09-13 15:23:20,228] INFO in app: Scaling Payload: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2022-09-13 15:23:20,233] INFO in app: output prediction: [20.35373177134412]
+127.0.0.1 - - [13/Sep/2022 15:23:20] "POST /predict HTTP/1.1" 200 -
+[2022-09-13 15:23:28,771] INFO in app: JSON payload: 
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2022-09-13 15:23:28,793] INFO in app: Inference payload DataFrame: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2022-09-13 15:23:28,802] INFO in app: Scaling Payload: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2022-09-13 15:23:28,806] INFO in app: output prediction: [20.35373177134412]
+127.0.0.1 - - [13/Sep/2022 15:23:28] "POST /predict HTTP/1.1" 200 -
