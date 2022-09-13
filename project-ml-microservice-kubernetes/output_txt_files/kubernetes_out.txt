@@ -13,6 +13,18 @@ Forwarding from [::1]:8000 -> 80
 Handling connection for 8000
 Handling connection for 8000
 
+
+
+*output of make_predictions.sh*
+https://github.com/FahmyKhalilM/DevOps_Microservice ./make_prediction.sh 
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
+
+
+
 output from the command --> kubectl logs ml-ml-app-5df447d947-wvqj4 in another terminal>
 kubectl logs ml-app-5df447d947-wvqj4
  * Serving Flask app "app" (lazy loading)
